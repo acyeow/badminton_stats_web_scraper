@@ -9,19 +9,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
 from datetime import datetime
 
-RANKINGS_URL = 'https://badmintonranks.com/ranking/bwf'
-OUTPUT_DIR = 'ranking_data'
-
-EVENT_TYPES = [
-    'Men\'s Single',
-    'Women\'s Single', 
-    'Men\'s Double',
-    'Women\'s Double',
-    'Mixed Double'
-]
+from config.scraper_config import RANKINGS_URL, OUTPUT_DIR, EVENT_TYPES
 
 class Scraper:
-    def __init__(self):
+    def __init__(self, rankings_url: str, output_dir: str, event_types: list):
         options = Options()
         # Set user agent to avoid detection
         options.set_preference("general.useragent.override", 
@@ -30,6 +21,9 @@ class Scraper:
         self.driver = webdriver.Firefox(options=options)
         self.driver.implicitly_wait(15)
         self.driver.set_page_load_timeout(60)
+        self.rankings_url = rankings_url
+        self.output_dir = output_dir
+        self.event_types = event_types
 
     def load_page(self):
         """Load the rankings page initially"""
@@ -213,7 +207,7 @@ class Scraper:
 
 if __name__ == '__main__':
     # Initialize the scraper
-    scraper = Scraper()
+    scraper = Scraper(RANKINGS_URL, OUTPUT_DIR, EVENT_TYPES)
     
     try:
         # Load the page once
