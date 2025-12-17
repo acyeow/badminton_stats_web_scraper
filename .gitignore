@@ -1,6 +1,9 @@
-# Scraper environment
-scraper/venv/
+venv
 
 .env
 
 logs
+
+scraper/airflow_notes.md
+
+__pycache__/

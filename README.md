@@ -22,5 +22,5 @@ pip install -r requirements.txt
 ### Run the script
 
 ```
-python3 scraper.py
+python3 scraper/scraper.py
 ```
