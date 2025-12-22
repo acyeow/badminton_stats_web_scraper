@@ -54,6 +54,7 @@ At localhost:5050 we can login to postgres with:
 ``` 
 user: admin@admin.com
 password: root
+```
 
 ### Create a new server on Postgres
 
