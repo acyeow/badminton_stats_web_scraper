@@ -7,9 +7,6 @@
 from airflow import DAG
 from datetime import datetime, timedelta
 
-from config.scraper_config import RANKINGS_URL, OUTPUT_DIR, EVENT_TYPES
-from scraper.scraper import Scraper
-
 default_args = {
     'owner': 'airflow',
     'start_date': datetime(2025, 12, 17),
