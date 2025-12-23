@@ -88,12 +88,12 @@ def ProcessBadmintonStats():
             ) t
             ON CONFLICT ("Player Name") DO UPDATE
             SET
-                "Rank" = t."Rank",
-                "Country" = t."Country",
-                "Points" = t."Points",
-                "Tournaments" = t."Tournaments",
-                "Last Update" = t."Last Update",
-                "Rank Change" = t."Rank Change"
+                "Rank" = EXCLUDED."Rank",
+                "Country" = EXCLUDED."Country",
+                "Points" = EXCLUDED."Points",
+                "Tournaments" = EXCLUDED."Tournaments",
+                "Last Update" = EXCLUDED."Last Update",
+                "Rank Change" = EXCLUDED."Rank Change"
         """
         try:
             postgres_hook = PostgresHook(postgres_conn_id='pg_conn')
